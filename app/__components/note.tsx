@@ -81,6 +81,7 @@ function Note({ content, title }: { content: string; title: string }) {
                                         <Button
                                             text="Close"
                                             color="bg-red-600"
+                                            type="button"
                                             handler={() => setShowModal(false)}
                                         />
                                     </div>
@@ -88,6 +89,7 @@ function Note({ content, title }: { content: string; title: string }) {
                                         <Button
                                             text="Save"
                                             color="bg-indigo-600"
+                                            type="button"
                                             handler={() => {
                                                 console.log(
                                                     "saving to database"

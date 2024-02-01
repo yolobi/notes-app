@@ -64,6 +64,7 @@ export default function Layout({
                                         <Button
                                             text="Sign Out"
                                             color="bg-red-500"
+                                            type="button"
                                         />
                                     </div>
                                 </li>

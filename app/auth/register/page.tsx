@@ -70,7 +70,11 @@ export default function Page() {
                         </div>
 
                         <div>
-                            <Button text="Sign Up" color="bg-indigo-600" />
+                            <Button
+                                text="Sign Up"
+                                color="bg-indigo-600"
+                                type="submit"
+                            />
                         </div>
                     </form>
 

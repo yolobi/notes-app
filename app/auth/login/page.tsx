@@ -1,4 +1,5 @@
 import Button from "@/app/__components/button";
+import { Register } from "@/lib/auth";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -20,7 +21,7 @@ export default function Page() {
                 </div>
 
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form className="space-y-6" action="#" method="POST">
+                    <form className="space-y-6" action={Register} method="POST">
                         <div>
                             <label
                                 htmlFor="email"
@@ -70,7 +71,11 @@ export default function Page() {
                         </div>
 
                         <div className="w-full">
-                            <Button text="Sign in" color="bg-indigo-600" />
+                            <Button
+                                text="Sign in"
+                                color="bg-indigo-600"
+                                type="submit"
+                            />
                         </div>
                     </form>
 
