@@ -1,9 +1,31 @@
+"use client";
 import Button from "@/app/__components/button";
 import { Register } from "@/lib/auth";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Page() {
+    const [email, setEmail] = useState("");
+    const [pass, setPass] = useState("");
+
+    async function handleLogin(e: React.SyntheticEvent) {
+        e.preventDefault();
+        try {
+            const resp = await fetch("api/auth/login", {
+                method: "POST",
+                body: JSON.stringify({
+                    email: email,
+                    pass: pass,
+                }),
+            });
+
+            console.log(resp);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <>
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -21,7 +43,7 @@ export default function Page() {
                 </div>
 
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form className="space-y-6" action={Register} method="POST">
+                    <form className="space-y-6" onSubmit={handleLogin}>
                         <div>
                             <label
                                 htmlFor="email"
@@ -35,6 +57,7 @@ export default function Page() {
                                     name="email"
                                     type="email"
                                     autoComplete="email"
+                                    onChange={(e) => setEmail(e.target.value)}
                                     required
                                     className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
                                 />
@@ -64,6 +87,7 @@ export default function Page() {
                                     name="password"
                                     type="password"
                                     autoComplete="current-password"
+                                    onChange={(e) => setPass(e.target.value)}
                                     required
                                     className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
                                 />
